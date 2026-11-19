@@ -1,25 +1,25 @@
-# Outcome Roadmap & Trade-off Memo
+# Outcome Roadmap & Trade-off Memo: Meridian Foundations
 
 > Module 2 · Turn Your Strategy into an Outcome Roadmap
 
 ## 1. Trade-off memo
 
-> **Rock 1:** _____
+> **Rock 1:** Simplify the daily log: reduce from 14 required fields to 4 (supports KR1): Foremen skip the daily log because 14 required fields take too long at the end of a shift. Cutting it to the 4 fields the office actually uses makes logging as fast as sending a text, so more projects get weekly field entries.
 >
-> **Rock 2:** _____
+> **Rock 2:** Build an offline-first mobile experience for job sites with poor connectivity (supports KR2): When there’s no signal, foremen take photos and write notes later from memory, and that reconstructed data is what the office ends up correcting. Letting daily logs and photos save on the device and sync once signal returns means data is captured on site, in the moment, so fewer records need manual correction.
 >
-> **Rock 3:** _____
+> **Rock 3:** Add a photo markup and annotation tool for field teams (supports KR1): Foremen already document their work with the phone camera and send it to a group text. Letting them mark up photos directly in Meridian meets them where they already work, so the photos and their context come into the system instead of disappearing into a text thread.
 >
-> **Hard no 1:** _____
+> **Hard no 1:** Build an executive reporting dashboard with custom KPIs: Two renewals are at risk, and we’re still saying no. A dashboard is only as trustworthy as the data under it, and today that data breaks at the job site. Building insights on top of data that needs correcting puts our credibility at risk with the customers we’re trying to keep. We fix capture first, and the data model work (#3) is next so the dashboard becomes possible. For the two at-risk accounts, CS will work with existing reports in the meantime.
 >
-> **Hard no 2:** _____
+> **Hard no 2:** Create a foreman-facing mobile app (separate from the PM web app): This is the most expensive version of a bet we can test cheaply. Simplifying the daily log and adding photo markup will show whether foremen use Meridian once capture is easy. A second app would split a 10-person team across two codebases and add a sync boundary, and sync is exactly where data integrity breaks. We’ll revisit if weekly field entries stall below 25% after those rocks ship.
 >
-> **Hard no 3:** _____
+> **Hard no 3:** Add a time-tracking module: Three clients asked for it during contract negotiations, but it’s a new office-side module that doesn’t move any of our KRs. Every engineer on it is one fewer on field capture, and field capture is the bet. We’d rather win those deals on clean field data than with another feature they could get anywhere.
 
 ## 2. Outcome roadmap
 
 | Horizon | Outcome / bet | Owning team(s) | Success signal |
 |---|---|---|---|
-| Now (0 to 3 mo) | _____ | _____ | _____ |
-| Next (3 to 6 mo) | _____ | _____ | _____ |
-| Later (6 to 12 mo) | _____ | _____ | _____ |
+| Now (0 to 3 mo) | **The problem this quarter: the people who do the work on construction sites barely use Meridian, so the office runs on data that is late, incomplete or reconstructed from memory.** Foremen skip the end-of-shift daily log because it has 14 required fields and texting their PM is faster, so most projects have no regular field record; we bet cutting the log to the 4 fields the office actually uses will get foremen logging every week (KR1); superintendents and foremen on sites with poor cell signal can't submit anything from the field, so they write notes later from memory and the office spends hours correcting what they reconstruct; we bet letting logs and photos save on the phone and sync when signal returns will mean data is captured on site, in the moment, and needs fewer corrections (KR2); field crews already document their work with the phone camera, but the photos go to group texts and never reach the project record, so the office loses the evidence and context; we bet letting crews mark up photos directly in Meridian will bring those photos into the system with their context attached (KR1) | Field adoption & mobile (PM1, mobile eng, UX research) | Projects with weekly field entries move from 5% toward 20% by end of quarter; daily-log completion rate per foreman rises; field records needing office correction fall from 15% toward 12%; at least one marked-up photo per active project per week |
+| Next (3 to 6 mo) | Data model foundation so clean field data lands in a structure that can later support multi-project insights (comes after Now because there's no point structuring data that isn't flowing yet); fix the Procore import/export integration for the 2 broken clients (repairs existing depth once field data is worth exporting and protects KR2 downstream); AI-assisted RFI drafting from a foreman's photo and voice note (extends capture once foremen are using photo markup and the app daily); push notifications for schedule changes (gives foremen a daily reason to open the app once there's a fast capture flow to land them in); scale the field rollout to mid-size accounts based on churn-interview results (waits until Q1 interviews confirm the field gap drives churn) | Field adoption & mobile (PM1); Enterprise (PM2) for data model and Procore; CS for rollout | Field data flows to downstream reports and integrations without manual remapping; Procore sync errors at zero for affected clients; RFIs started from the field appear; KR1 trending past 30%; most churned mid-size accounts interviewed cite field or data issues |
+| Later (6 to 12 mo) | Bet: executive dashboards and multi-project insights built on trusted field data (the path back for the #10 request); bet: compliance checklists generated automatically from field entries, not keyed in separately in the office; bet: a dedicated foreman app, only if KR1 stalls below 25% after the Now bets ship; bet: a subcontractor portal once field data is clean enough to share outward | Unfunded. Enterprise (PM2) and field (PM1) to scope when capacity opens | KR2 at or near 7% (data trusted enough to build insights on); KR3 churn trending toward 8%; large accounts citing field data quality in renewals and wins |
